@@ -4,4 +4,7 @@ This repository serves as my personal space for learning and practicing C# progr
 
 - Part #1
     - [Hello World](./content/1/HelloWorld/README.md)
+    - [Variables and Types](./content/1/VariablesAndTypes/README.md)
+    - [Type Conversion](./content/1/TypeConversion/README.md)
+    - [Conditionals](./content/1/Conditionals/README.md)
 
