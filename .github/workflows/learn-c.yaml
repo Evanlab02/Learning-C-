@@ -16,8 +16,12 @@ jobs:
     # Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Build and run all exercises
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.x'
+        cache: true
+    - name: Build all exercises
       working-directory: content/1/
       run: |
         BASE_DIR=$(pwd)
@@ -28,6 +32,16 @@ jobs:
           make restore
           echo "Building project in $dir"
           make build
+          echo "Done, moving on..."
+          cd "$BASE_DIR"
+          echo "##[endgroup]"
+        done
+    - name: Run all exercises
+      working-directory: content/1/
+      run: |
+        BASE_DIR=$(pwd)
+        for dir in $(find . -maxdepth 1 -type d | tail -n +2); do
+          echo "##[group]Processing $dir"
           echo "Running project in $dir"
           make run
           echo "Done, moving on..."
